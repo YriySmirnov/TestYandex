@@ -20,6 +20,11 @@ public class FindElements {
     }
 
     public static List<WebElement> findAllS(String element) {
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return getDriver().findElements(By.cssSelector(element));
     }
 }

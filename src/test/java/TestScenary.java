@@ -27,7 +27,7 @@ public class TestScenary {
         catalogStep.clickElement(1);
         ElementStep elementStep = new ElementStep();
         elementStep.compare();
-//        elementStep.returnBack();
+        elementStep.returnBack();
         catalogStep.checkDelicacy("Whiskas");
         catalogStep.checkDelicacy("Мнямс");
         String expectedNameSecond = catalogStep.getNameElement(2);
@@ -56,4 +56,6 @@ public class TestScenary {
         int actualElements = compare.amountElements();
         assertEquals(expectedElements, actualElements, "Элементов в сравнении" + actualElements);
     }
+
+
 }

@@ -5,8 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 
-import static util.DriverManager.getDriver;
-import static util.DriverManager.quitDriver;
+import static util.DriverManager.*;
 
 public class TestSetupStart {
     WebDriver driver;

@@ -3,6 +3,8 @@ package Steps;
 import io.qameta.allure.Step;
 import pages.ElementPages;
 
+import java.util.ArrayList;
+
 import static pages.CatalogPages.catalogPage;
 import static util.DriverManager.getDriver;
 import static util.FindElements.*;
@@ -17,7 +19,9 @@ public class ElementStep {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
- //       findX(elementPages.heading);
+        ArrayList<String> newTab = new ArrayList<>(getDriver().getWindowHandles());
+        getDriver().switchTo().window(newTab.get(1));
+        findX(elementPages.heading);
         saveAllureScreenshot();
     }
 
@@ -25,11 +29,10 @@ public class ElementStep {
     public void compare() {
         findX(elementPages.compareAdd).click();
         saveAllureScreenshot();
-        returnBack();
     }
 
     @Step("Вернуться на первую вкладку")
-    void returnBack(){
+    public void returnBack(){
         getDriver().switchTo().window(catalogPage);
         saveAllureScreenshot();
     }
