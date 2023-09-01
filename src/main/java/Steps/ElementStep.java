@@ -34,7 +34,7 @@ public class ElementStep {
     @Step("Вернуться на первую вкладку")
     public void returnBack(){
         getDriver().close();
-        //getDriver().switchTo().window(catalogPage);
+        getDriver().switchTo().window(catalogPage);
         saveAllureScreenshot();
     }
 
@@ -46,5 +46,6 @@ public class ElementStep {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        findX(elementPages.compareInf).click();
     }
 }
