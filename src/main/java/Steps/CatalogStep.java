@@ -3,6 +3,8 @@ package Steps;
 import io.qameta.allure.Step;
 import pages.CatalogPages;
 
+import static pages.CatalogPages.catalogPage;
+import static util.DriverManager.getDriver;
 import static util.FindElements.*;
 import static util.Screenshot.saveAllureScreenshot;
 
@@ -22,17 +24,22 @@ public class CatalogStep {
     @Step("Установка фильтра цены минимум - {min} и максимум - {max}")
     public void setMinMax(String min, String max) {
         try {
-            Thread.sleep(5000);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         findS(catalogPages.priceMin).sendKeys(min);
         try {
-            Thread.sleep(5000);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         findS(catalogPages.priceMax).sendKeys(max);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         saveAllureScreenshot();
     }
 
@@ -86,5 +93,12 @@ public class CatalogStep {
             e.printStackTrace();
         }
         findAllS(catalogPages.element).get(index - 1).click();
+        String page = null;
+        for (String win:getDriver().getWindowHandles()) {
+            if (win != catalogPage) {
+                page = win;
+            }
+        }
+        getDriver().switchTo().window(page);
     }
 }
