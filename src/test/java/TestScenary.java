@@ -3,8 +3,7 @@ import Steps.CompareStep;
 import Steps.ElementStep;
 import Steps.HomeStep;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class TestScenary {
 
@@ -50,7 +49,7 @@ public class TestScenary {
         assertTrue(actualPriceSecond <= 300, "Цена второго элемента больше 300");
         compare.delElement(2);
         int actualFind = compare.findElement("Whiskas");
-        assertTrue(actualFind>=0, "Элемент " + actualFind + " отсутствует");
+        assertFalse(actualFind>=0, "Элемент " + actualFind + " присутствует");
         compare.compareClear();
         int expectedElements = 0;
         int actualElements = compare.amountElements();

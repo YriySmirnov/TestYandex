@@ -1,8 +1,10 @@
 package Steps;
 
 import io.qameta.allure.Step;
+import org.openqa.selenium.interactions.Actions;
 import pages.ComparePages;
 
+import static util.DriverManager.getDriver;
 import static util.FindElements.*;
 import static util.Screenshot.saveAllureScreenshot;
 
@@ -28,11 +30,12 @@ public class CompareStep {
     @Step("Получение цены элемента с индексом - {index} в сравнениваемых")
     public int getPrice(int index) {
         saveAllureScreenshot();
-        return Integer.valueOf(findAllS(comparePage.elementPrice).get(index - 1).getText());
+        return Integer.valueOf(findAllS(comparePage.elementPrice).get(index - 1).getAttribute("data-autotest-value"));
     }
 
     @Step("Удаление элемента с индексом - {index} из сравнениваемых")
     public void delElement(int index) {
+        new Actions(getDriver()).moveToElement(findAllS(comparePage.elementDel).get(index*2-1)).perform();
         findAllS(comparePage.elementDel).get(index*2-1).click();
         saveAllureScreenshot();
     }
