@@ -55,6 +55,4 @@ public class TestScenary {
         int actualElements = compare.amountElements();
         assertEquals(expectedElements, actualElements, "Элементов в сравнении" + actualElements);
     }
-
-
 }
