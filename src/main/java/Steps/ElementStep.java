@@ -40,6 +40,11 @@ public class ElementStep {
     @Step("Перейти на страницу сравнения")
     public void viewCompare() {
         saveAllureScreenshot();
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         findX(elementPages.compareInf).click();
     }
 }

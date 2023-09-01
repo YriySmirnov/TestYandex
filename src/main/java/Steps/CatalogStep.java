@@ -80,6 +80,11 @@ public class CatalogStep {
     @Step("Перейти на новую страницу элемента с индексом - {index}")
     public void clickElement(int index) {
         saveAllureScreenshot();
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         findAllS(catalogPages.element).get(index - 1).click();
     }
 }
